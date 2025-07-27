@@ -22,7 +22,11 @@ import {
   endOfMonth,
   setMonth,
 } from "date-fns";
-
+import {
+  getWeeksForCurrentYear,
+  getMonthsForCurrentYear,
+  getYearsRange,
+} from "../utils/dateHelpers";
 const buttonStyles = {
   justifyContent: "flex-start",
   textTransform: "none",
@@ -55,6 +59,10 @@ const ActionPanel = () => {
   const [isCustomSummaryOpen, setIsCustomSummaryOpen] = useState(false);
   const [customSummaryData, setCustomSummaryData] = useState(null);
   const [isLoadingCustom, setIsLoadingCustom] = useState(false);
+
+  const weeks = getWeeksForCurrentYear();
+  const months = getMonthsForCurrentYear();
+  const years = getYearsRange();
 
   const handleWeekClick = async (weekNumber) => {
     setIsWeeklyModalOpen(true);
@@ -254,29 +262,6 @@ const ActionPanel = () => {
     setIsYearlyModalOpen(false);
     setSelectedYearData(null);
   };
-  const currentWeekNumber = getWeek(new Date());
-  const weeks = Array.from({ length: currentWeekNumber }, (_, i) => i + 1);
-  const monthNames = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-  ];
-  const currentMonthIndex = getMonth(new Date());
-  const months = monthNames.slice(0, currentMonthIndex + 1);
-  const currentYear = getYear(new Date());
-  const years = Array.from(
-    { length: currentYear - 2000 + 1 },
-    (_, i) => 2000 + i
-  ).reverse();
 
   const handleAnalyze = async (start, end) => {
     handleCustomModalClose(); // Close the date picker

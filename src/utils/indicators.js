@@ -20,5 +20,6 @@ export const calculateRSI = (data) => {
 export const calculateSMA = (data, period) => {
   if (!data || data.length < period) return null;
   const sum = data.slice(0, period).reduce((acc, val) => acc + val.close, 0);
-  return (sum / period).toLocaleString(undefined, { maximumFractionDigits: 2 });
+  // Change this line from toLocaleString to toFixed
+  return (sum / period).toFixed(2);
 };
