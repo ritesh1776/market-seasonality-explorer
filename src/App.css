@@ -1,0 +1,341 @@
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  display: flex;
+  justify-content: center;
+  padding-top: 20px; /* Reduced top padding */
+  background-color: #f4f4f9;
+  padding-top: 15px;
+  padding-bottom: 5px;
+}
+.App {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px; /* Adjusted gap */
+}
+.app-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 30px; /* Increased from 20px */
+  width: 100%; /* Ensure this is present */
+}
+h1 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #23424a;
+  margin: 0;
+}
+.main-content {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+/* === ADD THIS NEW BLOCK TO THE END OF YOUR FILE === */
+/* Action Panel Legend Hover Styles */
+.action-panel-legend-wrapper {
+  position: relative; /* Crucial for positioning the popover */
+}
+
+.action-panel-legend-popover {
+  /* Hide the popover by default */
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 105%; /* Position it to the right of the button */
+  z-index: 100;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+  width: 260px;
+}
+
+/* Show the popover on hover */
+.action-panel-legend-wrapper:hover .action-panel-legend-popover {
+  opacity: 1;
+  visibility: visible;
+}
+.legend-container {
+  display: flex; /* This is for the popover's content box */
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 15px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+  border: 1px solid #eee;
+}
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
+  color: #333;
+  white-space: nowrap;
+}
+.legend-swatch {
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+}
+/* === CALENDAR, TOOLTIP & VISUALIZATION STYLES (These are unchanged) === */
+.calendar-container {
+  width: 94%;
+  max-width: 900px;
+  background-color: #fff;
+  border-radius: 9px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.calendar-header h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: #333;
+}
+.calendar-header button {
+  background: #6c63ff;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.calendar-header button:hover {
+  background: #574b90;
+}
+.days-of-week,
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+}
+.days-of-week {
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: #555;
+}
+.day-of-week-cell,
+.calendar-cell {
+  display: flex;
+  padding: 10px;
+  border-radius: 4px;
+}
+.day-of-week-cell {
+  justify-content: center;
+  align-items: center;
+}
+.calendar-cell {
+  position: relative;
+  min-height: 50px;
+  border: 1px solid #e0e0e0;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.calendar-cell:hover {
+  background-color: #e2e6ea !important;
+}
+.disabled-day {
+  color: #ccc;
+  background-color: #f9f9f9;
+}
+.today {
+  border: 2px solid #6c63ff;
+  font-weight: bold;
+}
+.cell-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start; /* This aligns items to the top */
+}
+.cell-header span {
+  font-weight: bold;
+}
+.volatility-low {
+  background-color: #90ee90;
+}
+.volatility-medium {
+  background-color: #c4f454;
+}
+.volatility-high {
+  background-color: #f0813c;
+}
+.performance-icon {
+  font-size: 2rem !important;
+}
+.performance-icon.up {
+  color: #28a745;
+}
+.performance-icon.down {
+  color: #dc3545;
+}
+.icon-placeholder {
+  width: 2rem;
+  height: 2rem;
+}
+.tooltip-container {
+  background-color: #2d3436;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  pointer-events: none;
+  white-space: nowrap;
+  transition: opacity 0.1s ease-in-out;
+}
+.volume-bar-container {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 35%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 0 4px;
+  opacity: 0.7;
+}
+.volume-bar {
+  width: 70%;
+  background-color: #6c63ff;
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
+  transition: background-color 0.2s;
+}
+.calendar-cell:hover .volume-bar {
+  background-color: #333;
+}
+/* Replace the existing dashboard layout rules with this block */
+.dashboard-layout {
+  display: flex;
+  gap: 24px;
+  align-items: stretch; /* Make all columns equal height */
+  width: 100%;
+}
+
+.action-panel-wrapper {
+  flex: 0.8;
+  min-width: 180px;
+  display: flex; /* Add this */
+  align-items: center; /* Add this to vertically center the panel */
+}
+
+.main-content {
+  flex: 2.5; /* Adjust flex ratio for calendar */
+  min-width: 0;
+}
+
+.sidebar-content {
+  flex: 1.4; /* Adjust flex ratio for sidebar */
+  min-width: 0;
+}
+
+/* New Action Panel Styles */
+.action-panel-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 15px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  width: 100%; /* Make panel take full width of its column */
+  /* REMOVED: height: 100% and justify-content: center */
+}
+.submenu-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  /* The height: 100% is removed */
+}
+
+.submenu-list {
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-top: 10px;
+  margin-top: 10px;
+  border-top: 1px solid #eee;
+  max-height: 450px; /* Constrains the height and enables scrolling */
+}
+.submenu-list::-webkit-scrollbar {
+  display: none; /* For Chrome, Safari, and Opera */
+}
+.submenu-list {
+  -ms-overflow-style: none; /* For Internet Explorer and Edge */
+  scrollbar-width: none; /* For Firefox */
+}
+/* === RESPONSIVE DESIGN RULES === */
+
+/* For tablet and mobile screens (1200px wide or less) */
+@media (max-width: 1200px) {
+  .dashboard-layout {
+    flex-direction: column; /* Stack the main columns vertically */
+    align-items: center; /* Center the stacked columns */
+    gap: 20px;
+  }
+
+  .action-panel-wrapper,
+  .main-content,
+  .sidebar-content {
+    flex: 1; /* Allow each column to take full width */
+    width: 100%;
+    max-width: 800px; /* Give a max-width for tablets */
+  }
+
+  .sidebar-content {
+    position: static; /* Disable the sticky position on small screens */
+  }
+
+  h1 {
+    font-size: 1.8rem; /* Make the main title smaller */
+  }
+}
+
+/* For small mobile screens (600px wide or less) */
+@media (max-width: 600px) {
+  .App {
+    padding: 12px; /* Reduce overall padding */
+  }
+
+  .app-header {
+    flex-direction: column; /* Stack the title and legend button */
+    gap: 15px;
+    align-items: center;
+  }
+
+  .calendar-cell {
+    min-height: 60px; /* Make calendar cells shorter */
+    padding: 2px;
+  }
+
+  .performance-icon {
+    font-size: 1.5rem !important; /* Make icons a bit smaller */
+  }
+
+  .icon-placeholder {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+}
