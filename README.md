@@ -11,7 +11,7 @@ You can view and interact with a live preview of the application here:
 ## ✨ Features
 
 - **Interactive Calendar:** A monthly calendar view showing daily performance, volatility, and volume.
-  ![Interactive Calendar](./public/screenshot1.png)
+  ![Interactive Calendar](./public/Screenshot1.png)
 - **Multi-Layer Visualization:**
   - Volatility Heatmap (Green/Yellow/Red).
   - Performance Indicators (Up/Down Arrows).
@@ -23,9 +23,9 @@ You can view and interact with a live preview of the application here:
   - Perform weekly, monthly, and yearly analysis via a dedicated control panel.
   - Each analysis opens a detailed modal with a zoomable chart and aggregated summary stats.
 - **Custom Date Range Analysis:** Use a date picker to analyze any historical period.
-  ![Custom Date Range Analysis](./public/screenshot3.png)
+  ![Custom Date Range Analysis](./public/Screenshot3.png)
 - **Interactive Charts:** All charts include a "Zoom & Pan" brush for detailed inspection.
-  ![Interactive Charts](./public/screenshot2.png)
+  ![Interactive Charts](./public/Screenshot2.png)
 - **Responsive Design:** The layout adapts for usability on tablet and mobile devices.
 
 ## 🛠️ Tech Stack & Libraries
