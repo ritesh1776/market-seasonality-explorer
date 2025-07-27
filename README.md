@@ -26,7 +26,6 @@ You can view and interact with a live preview of the application here:
   ![Custom Date Range Analysis](./public/screenshot3.png)
 - **Interactive Charts:** All charts include a "Zoom & Pan" brush for detailed inspection.
   ![Interactive Charts](./public/screenshot2.png)
-- **Theming:** Switch between Default (Light) and Dark color themes.
 - **Responsive Design:** The layout adapts for usability on tablet and mobile devices.
 
 ## 🛠️ Tech Stack & Libraries
